@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTFF-8">
+<meta charset="UTF-8">
 <title>List Test</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 			<td>Password</td>
 			<td>Name</td>
 		</tr>
-		<c:forEach items="${list }" var="dto">
+		<c:forEach items="${dtos }" var="dto">
 			<tr>
 				<td>${dto.id }</td>
 				<td>${dto.pw }</td>

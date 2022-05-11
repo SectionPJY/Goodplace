@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.goodplace.dao.UserDAO">
-	<select id="userList" resultType="com.spring.goodplace.dto.UserDTO">
-		SELECT * FROM g_user;
+<mapper namespace="UserMapper">
+	<select id="userList" resultType="UserDTO">
+		SELECT *
+		FROM g_user;
 	</select>
+	<!--
+	<select id="userLogin">
+		SELECT *
+		FROM g_user
+		WHERE u_id = #{u_id} AND u_pw = #{u_pw};
+	</select>
+	-->
 </mapper>

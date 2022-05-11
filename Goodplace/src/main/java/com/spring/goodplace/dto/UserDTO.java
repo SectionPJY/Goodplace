@@ -1,38 +1,38 @@
 package com.spring.goodplace.dto;
 
 public class UserDTO {
-	private String id;
-	private String pw;
-	private String name;
+	private String u_id;
+	private String u_pw;
+	private String u_name;
 	
 	public UserDTO(String id, String pw, String name) {
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
+		this.u_id = id;
+		this.u_pw = pw;
+		this.u_name = name;
 	}
 
 	public String getId() {
-		return id;
+		return u_id;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.u_id = id;
 	}
 
 	public String getPw() {
-		return pw;
+		return u_pw;
 	}
 
 	public void setPw(String pw) {
-		this.pw = pw;
+		this.u_pw = pw;
 	}
 
 	public String getName() {
-		return name;
+		return u_name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.u_name = name;
 	}
 
 }
