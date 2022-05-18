@@ -23,7 +23,7 @@ public class UserDAO extends AbstractDAO {
 	private SqlSession sqlSession;
 
 	public List<UserDTO> userList() {
-		System.out.println("===== List =====");
+		System.out.println("========== List ==========");
 		System.out.println(sqlSession.getConfiguration());
 		System.out.println(sqlSession.getConnection());
 
@@ -31,12 +31,23 @@ public class UserDAO extends AbstractDAO {
 	}
 
 	public int loginCheck(String id, String pw) {
-		System.out.println("===== Login Check =====");
+		System.out.println("========== Login Check ==========");
 		System.out.println("ID : " + id + ", PW : " + pw);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("u_id", id);
 		map.put("u_pw", pw);
 
 		return sqlSession.selectOne("UserMapper.userLogin", map);
+	}
+
+	public int signupCheck(String id, String pw, String name) {
+		System.out.println("========== SignUp Check ==========");
+		System.out.println("ID : " + id + ", PW : " + pw + ", 이름 : " + name);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("u_id", id);
+		map.put("u_pw", pw);
+		map.put("u_name", name);
+
+		return sqlSession.insert("UserMapper.signUp", map);
 	}
 }

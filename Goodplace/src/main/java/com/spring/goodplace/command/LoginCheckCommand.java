@@ -25,7 +25,7 @@ public class LoginCheckCommand {
 	private UserDAO dao;
 
 	public int execute(Model model) {
-		System.out.println("===== Login Check Command Running");
+		System.out.println("========== Login Check Command Running ==========");
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
@@ -34,10 +34,10 @@ public class LoginCheckCommand {
 		String pw = request.getParameter("pw");
 
 		int result = dao.loginCheck(id, pw);
-		System.out.println("===== Login Check Command Complete =====");
+		System.out.println("========== Login Check Command Complete ==========");
 
 		if (1 == result) {
-			System.out.println("===== Session Create =====");
+			System.out.println("========== Session Create ==========");
 			session.setAttribute("id", id);
 			session.setAttribute("pw", pw);
 
