@@ -26,9 +26,9 @@ import com.spring.goodplace.dao.UserDAO;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class GoodplaceController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GoodplaceController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -46,20 +46,23 @@ public class HomeController {
 
 		return "home";
 	}
-	
+
 	AbstractCommand cmd;
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Autowired
 	private UserListCommand listCommand;
-	
+
+	@Autowired
+	private LoginCheckCommand loginCheckCommand;
+
 	// 메인페이지
 	@RequestMapping("/index")
 	public String index(Model model) {
 		System.out.println("===== Load Index Page =====");
-		
+
 		return "/index";
 	}
 
@@ -74,7 +77,7 @@ public class HomeController {
 
 	// 로그인 페이지
 	@RequestMapping("/login")
-	public String login(Model model) {
+	public String login() {
 
 		return "/login";
 	}
@@ -83,36 +86,37 @@ public class HomeController {
 	@RequestMapping("/loginCheck")
 	public String loginCheck(HttpServletRequest request, Model model) {
 		System.out.println("===== Login Checking =====");
-		
 		model.addAttribute("request", request);
-		LoginCheckCommand logincmd = new LoginCheckCommand();
-		
-		boolean result = logincmd.execute(model);
-		if (true == result) {
-			System.out.println("===== Login Success =====");
-			return "redirect:index";
+
+		int result = loginCheckCommand.execute(model);
+
+		if (1 == result) {
+			return "redirect:loginOk";
 		} else {
-			System.out.println("===== Login Error =====");
-			return "redurect:login";
+			return "redirect:login";
 		}
 	}
 	
+	// 로그인 완료
+	@RequestMapping("/loginOk")
+	public String loginOk() {
+		
+		return "/loginOk";
+	}
+
+	// 회원가입 페이지
 	@RequestMapping("/signup")
 	public String signup() {
 		System.out.println("===== SignUp =====");
-		
+
 		return "/signup";
 	}
 	
+	// 회원가입 확인
 	@RequestMapping("/signupCheck")
 	public String signupCheck(HttpServletRequest request, Model model) {
-		System.out.println("===== SignUp Check =====");
-		model.addAttribute("request", request);
 		
-		cmd = new SignUpCheckCommand();
-		cmd.execute(model);
-		
-		return "/login";
+		return "";
 	}
 
 }
