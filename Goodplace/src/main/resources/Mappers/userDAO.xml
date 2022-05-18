@@ -5,11 +5,13 @@
 		SELECT *
 		FROM g_user;
 	</select>
-	<!--
-	<select id="userLogin">
-		SELECT *
+	<select id="userLogin" resultType="int">
+		SELECT COUNT(*)
 		FROM g_user
 		WHERE u_id = #{u_id} AND u_pw = #{u_pw};
 	</select>
-	-->
+	<insert id="signUp">
+		INSERT INTO g_user(u_id, u_pw, u_name)
+		VALUES(#{id}, #{pw}, #{name});
+	</insert>
 </mapper>
