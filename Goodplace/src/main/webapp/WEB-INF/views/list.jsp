@@ -16,9 +16,12 @@
 		</tr>
 		<c:forEach items="${dtos }" var="dto">
 			<tr>
-				<td>${dto.id }</td>
-				<td>${dto.pw }</td>
-				<td>${dto.name }</td>
+				<td>${dto.u_id }</td>
+				<td>${dto.u_pw }</td>
+				<td>${dto.u_name }</td>
+				<td>${dto.u_email }</td>
+				<td>${dto.u_address }</td>
+				<td>${dto.u_phone }</td>
 			</tr>
 		</c:forEach>
 	</table>

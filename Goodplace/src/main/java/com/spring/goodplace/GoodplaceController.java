@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.goodplace.command.AbstractCommand;
 import com.spring.goodplace.command.LoginCheckCommand;
 import com.spring.goodplace.command.SignUpCheckCommand;
 import com.spring.goodplace.command.UserListCommand;
@@ -47,8 +45,6 @@ public class GoodplaceController {
 		return "home";
 	}
 
-	AbstractCommand cmd;
-
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -72,7 +68,7 @@ public class GoodplaceController {
 	// DB 연결 확인용 리스트 출력
 	@RequestMapping("/list")
 	public String list(Model model) {
-		System.out.println("========== List ==========");
+		System.out.println("========== List Printing ==========");
 		listCommand.execute(model);
 
 		return "/list";

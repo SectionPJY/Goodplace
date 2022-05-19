@@ -15,6 +15,7 @@ public class UserListCommand {
 	UserDAO dao;
 
 	public void execute(Model model) {
+		System.out.println("========== List Command Running ==========");
 		List<UserDTO> dtos = dao.userList();
 		model.addAttribute("dtos", dtos);
 	}
