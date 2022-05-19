@@ -16,9 +16,6 @@ import com.spring.goodplace.dto.UserDTO;
 public class SignUpCheckCommand {
 
 	@Autowired
-	private SqlSession sqlSession;
-
-	@Autowired
 	private UserDAO dao;
 
 	public int execute(Model model) {

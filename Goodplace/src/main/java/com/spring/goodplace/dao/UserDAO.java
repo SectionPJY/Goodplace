@@ -39,6 +39,8 @@ public class UserDAO extends AbstractDAO {
 
 		return sqlSession.selectOne("UserMapper.userLogin", map);
 	}
+	
+	
 
 	public int signupCheck(String id, String pw, String name) {
 		System.out.println("========== SignUp Check ==========");

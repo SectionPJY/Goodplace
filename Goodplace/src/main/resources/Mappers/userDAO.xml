@@ -3,7 +3,7 @@
 <mapper namespace="UserMapper">
 	<!-- DB연결 확인용 List -->
 	<select id="userList" resultType="UserDTO">
-		SELECT *
+		SELECT u_id, u_pw, u_name, u_email, u_address, u_phone
 		FROM g_user;
 	</select>
 	
