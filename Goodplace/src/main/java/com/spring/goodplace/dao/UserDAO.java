@@ -39,8 +39,38 @@ public class UserDAO extends AbstractDAO {
 
 		return sqlSession.selectOne("UserMapper.userLogin", map);
 	}
-	
-	
+
+	public UserDTO makeSession(String id, String pw) {
+		StringBuffer LOGIN_QUERY = new StringBuffer();
+		LOGIN_QUERY.append("SELECT u_id, u_pw, u_name, u_email, u_address, u_phone ");
+		LOGIN_QUERY.append("FROM g_user ");
+		LOGIN_QUERY.append("WHERE u_id=? AND u_pw=?");
+		UserDTO dto = null;
+
+		try {
+			System.out.println("========== Connection Connect ==========");
+			connect();
+
+			pstmt = con.prepareStatement(LOGIN_QUERY.toString());
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			rs = pstmt.executeQuery();
+			System.out.println("========== ExecuteQuery Success ==========");
+
+			dto = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6));
+			System.out.println("========== DTO Create ==========");
+
+			return dto;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("========== Connection Close ==========");
+			closeAll();
+		}
+
+		return dto;
+	}
 
 	public int signupCheck(String id, String pw, String name) {
 		System.out.println("========== SignUp Check ==========");
