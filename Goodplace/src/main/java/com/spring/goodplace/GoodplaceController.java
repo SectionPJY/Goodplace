@@ -90,8 +90,10 @@ public class GoodplaceController {
 		int result = loginCheckCommand.execute(model);
 
 		if (1 == result) {
+			
 			return "redirect:loginOk";
 		} else {
+			
 			return "redirect:login";
 		}
 	}
@@ -120,8 +122,10 @@ public class GoodplaceController {
 		int result = signupCheckCommand.execute(model);
 
 		if (1 == result) {
+			
 			return "redirect:login";
 		} else {
+			
 			return "redirect:signup";
 		}
 	}

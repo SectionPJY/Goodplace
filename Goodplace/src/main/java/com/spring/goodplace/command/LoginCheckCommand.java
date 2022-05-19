@@ -34,19 +34,16 @@ public class LoginCheckCommand {
 		System.out.println("========== Login Check Command Complete ==========");
 
 		if (1 == result) {
+			System.out.println("========== Login Success ==========");
 			System.out.println("========== Session Create ==========");
-			session.setAttribute("id", id);
-			session.setAttribute("pw", pw);
-
-			Enumeration<?> attrName = session.getAttributeNames();
-			while (attrName.hasMoreElements()) {
-				String attr = (String) attrName.nextElement();
-				System.out.println(session.getAttribute(attr));
-			}
+//			session.setAttribute("id", id);
+//			session.setAttribute("pw", pw);
+			session.setAttribute("userInfo", dao.makeSession(id, pw));
 
 			return result;
 		} else {
-
+			System.out.println("========== Login Failed ==========");
+			
 			return result;
 		}
 	}

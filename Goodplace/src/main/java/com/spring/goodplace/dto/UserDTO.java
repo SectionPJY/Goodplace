@@ -11,7 +11,6 @@ public class UserDTO {
 	private String u_address;
 	private String u_phone;
 
-	// DB연결 테스트용 DTO
 	public UserDTO(String u_id, String u_pw, String u_name, String u_email, String u_address, String u_phone) {
 		this.u_id = u_id;
 		this.u_pw = u_pw;

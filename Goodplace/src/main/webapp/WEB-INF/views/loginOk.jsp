@@ -9,9 +9,9 @@
 <body>
 	<h1>Login Success</h1>
 	<%
-		Object u_id = session.getAttribute("id");
+		Object userInfo = session.getAttribute("userInfo");
 
-		out.println((String) u_id);
+		out.println((String) userInfo);
 	%>
 </body>
 </html>
