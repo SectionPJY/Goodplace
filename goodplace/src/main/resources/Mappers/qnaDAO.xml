@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnAMapper">
+	<!-- QnA List -->
+	<select id="qnaList" resultType="QnADTO">
+		SELECT q_id, q_title, q_content,
+		q_reply, q_uid
+		FROM g_qna
+		WHERE q_ans = 'N'
+		ORDER BY q_id DESC;
+	</select>
+
+	<!-- SELECT QnA -->
+	<select id="selectQna" resultType="QnADTO">
+		SELECT q.q_id, q.q_title, q.q_content, u.u_name
+		FROM g_qna AS q
+		INNER JOIN g_user AS u
+		ON q.q_uid = u.u_id
+		WHERE q_id = #{q_id};
+	</select>
+	
+	<!-- UPDATE QnA -->
+	<update id="updateQna">
+		UPDATE g_qna
+		SET q_reply = #{q_reply}, q_ans = 'Y'
+		WHERE q_id = #{q_id};
+	</update>
+	
+	<insert id="insertQna">
+		INSERT INTO g_qna(q_title, q_uid, q_content)
+		VALUES(#{q_title}, #{q_uid}, #{q_content});
+	</insert>
+	
+	<select id="userList" resultType="QnADTO">
+		SELECT q.q_id, q.q_title, q.q_ans, q.q_content, q.q_insert, u.u_name
+		FROM g_qna AS q
+		INNER JOIN g_user AS u
+		ON q.q_uid = u.u_id
+		WHERE q_uid = #{u_id};
+	</select>
+	
+	<delete id="deleteQna">
+		DELETE FROM g_qna
+		WHERE q_id = #{q_id};
+	</delete>
+</mapper>
