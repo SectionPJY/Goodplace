@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	<!-- User List -->
+	<select id="userList" resultType="UserDTO">
+		SELECT u_id, u_pw, u_name,
+		u_email, u_address, u_phone
+		FROM g_user
+		WHERE u_drop = 'N';
+	</select>
+
+	<!-- User Login Query -->
+	<select id="userLogin" resultType="int">
+		SELECT COUNT(*)
+		FROM g_user
+		WHERE u_id = #{u_id} AND u_pw = #{u_pw};
+	</select>
+
+	<!-- Employee Login Query -->
+	<select id="adminLogin" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		g_employee
+		WHERE e_id = #{e_id} AND e_pw = #{e_pw};
+	</select>
+
+	<!-- SignUp Query -->
+	<insert id="signUp">
+		INSERT INTO g_user(u_id, u_pw, u_name, u_email,
+		u_address, u_phone)
+		VALUES(#{u_id}, #{u_pw}, #{u_name}, #{u_email},
+		#{u_address}, #{u_phone});
+	</insert>
+
+	<insert id="registration">
+		INSERT INTO g_user(u_id, u_pw, u_name, u_address, u_phone)
+		VALUES(#{u_id}, #{u_pw}, #{u_name}, #{u_address}, #{u_phone});
+	</insert>
+
+	<!-- ID Duplication -->
+	<select id="idDupCheck" resultType="Integer">
+		SELECT COUNT(*)
+		FROM g_user
+		WHERE u_id = #{id};
+	</select>
+
+	<!-- Get User Information -->
+	<select id="userInfo" resultType="map">
+		SELECT u_id, u_pw, u_name,
+		u_email, u_address, u_phone
+		FROM g_user
+		WHERE u_id = #{u_id} AND u_pw =
+		#{u_pw};
+	</select>
+
+	<delete id="deleteUser">
+		UPDATE g_user
+		SET u_drop='Y'
+		WHERE u_id = #{u_id};
+	</delete>
+
+	<update id="updateUser">
+		UPDATE g_user
+		SET u_pw = #{u_pw}, u_name = #{u_name},
+		u_email = #{u_email}, u_address = #{u_address}, u_phone = #{u_phone}
+		WHERE u_id = #{u_id};
+	</update>
+</mapper>

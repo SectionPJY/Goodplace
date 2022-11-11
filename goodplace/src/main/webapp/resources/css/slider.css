@@ -1,0 +1,27 @@
+*{
+  margin: 0 ;
+  padding: 0 ;
+}
+.box-wrap{
+  overflow: hidden ;
+  width: 1296px ;
+  height: 360px ;
+  margin: 0 auto;
+}
+.box-list{
+  width: 1296px ;
+  position : relative ;
+}
+
+.box{
+  width: 1296px ;
+  height: 360px ;
+  position : absolute ;
+  opacity : 0;
+  visibility : hidden ;
+  transition : 0.5s ;
+}
+.box.active{
+  opacity : 1 ;
+  visibility : visible ;
+}

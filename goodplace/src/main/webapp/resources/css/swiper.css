@@ -1,0 +1,12 @@
+.slider {position: relative;max-width: 1180px;margin: 20px auto 0;padding: 0 50px;}
+.slider .inner {overflow: hidden;margin-right: -1.333%;}
+.slider .swiper-slide {display:flex;flex-wrap:wrap;}
+.slider .list {width: 32%;height: 150px;margin: 1% 1.333% 1% 0;background: #ade9ff;font-size: 20px;line-height: 150px;text-align: center;}
+.slider .swiper-prev, .slider .swiper-next {position: absolute;top: 50%;width: 35px;height: 35px;background:url('images/arrow.png') center center no-repeat;background-size: cover;text-indent: -999em;cursor: pointer;font-size: 0;}
+.slider .swiper-prev {left: 0;transform: rotateY(180deg) translate(0,-50%);}
+.slider .swiper-next {right:0;transform: translate(0,-50%);}
+
+@media (max-width: 768px) {
+    .slider .inner {margin-right: -2%;}
+    .slider .list{width: 48%;margin-right: 2%;}
+}
