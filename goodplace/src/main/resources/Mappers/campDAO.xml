@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CampMapper">
+	<!-- Camp List -->
+	<select id="campList" resultType="CampDTO">
+		SELECT *
+		FROM g_camp
+		WHERE c_drop = 'N';
+	</select>
+	
+	<!-- Camp Select -->
+	<select id="campSelect" resultType="CampDTO">
+		SELECT *
+		FROM g_camp
+		WHERE c_id = #{c_id};
+	</select>
+	
+	<!-- Camp Delete -->
+	<update id="deleteCamp">
+		UPDATE g_camp
+		SET c_drop = 'Y'
+		WHERE c_id = #{c_id};
+	</update>
+	
+	<update id="updateCamp">
+		UPDATE g_camp
+		set c_name = #{c_name}, c_price = #{c_price}, c_address = #{c_address}
+		WHERE c_id = #{c_id};
+	</update>
+	
+	<insert id="campRegister">
+		INSERT INTO g_camp(c_name, c_address, c_content)
+		VALUES(#{c_name}, #{c_address}, #{c_content});
+	</insert>
+</mapper>
